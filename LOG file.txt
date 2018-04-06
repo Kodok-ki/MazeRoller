@@ -1,0 +1,19 @@
+05/04/2018
+======================
+-Initialised new Git repository (repo) for project.
+-Pushed to remote server.
+-Established a working branch (called "ProtoWorking") 
+-Established a 10x10 (unity units) plane for first maze.
+-Using cubes to create the maze walls.
+-Created a new material to colour the maze walls.
+-Built maze walls for prototype maze.
+-Built separate 'start' and 'goal' areas. 
+ -Includes creating two addtional materials to colour them.
+-Created the script for managing the maze's rotations.
+-Tested the ball's collisions by rotating the maze about the y-axis at 1 degree
+ per frame for 1000 frames.
+  -The ball 'jitters' while it's stuck in the rotation but has an appropriate velocity
+   after the maze stops rotating.
+-Need to create script for actually controlling the maze before building the scene and 
+ pushing it to the remote repo (origin).
+-Didn't commit any changes
