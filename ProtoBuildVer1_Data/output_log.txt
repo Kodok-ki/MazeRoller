@@ -1,0 +1,44 @@
+Mono path[0] = 'A:/C/Users/Ricky/Desktop/Unity Projects/Maze Roller/ProtoBuildVer1_Data/Managed'
+Mono path[1] = 'A:/C/Users/Ricky/Desktop/Unity Projects/Maze Roller/ProtoBuildVer1_Data/Mono'
+Mono config path = 'A:/C/Users/Ricky/Desktop/Unity Projects/Maze Roller/ProtoBuildVer1_Data/Mono/etc'
+PlayerConnection initialized from A:/C/Users/Ricky/Desktop/Unity Projects/Maze Roller/ProtoBuildVer1_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55237
+Multi-casting "[IP] 192.168.0.32 [Port] 55237 [Flags] 2 [Guid] 1669527205 [EditorId] 3288019038 [Version] 1048832 [Id] WindowsPlayer(Ricky-DFC) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55237]
+PlayerConnection already initialized - listening to [0.0.0.0:55237]
+Player data archive not found at `A:/C/Users/Ricky/Desktop/Unity Projects/Maze Roller/ProtoBuildVer1_Data/data.unity3d`, using local filesystemInitialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   23.21.13.8813
+Begin MonoManager ReloadAssembly
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.024 seconds
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: A:\C\Users\Ricky\Desktop\Unity Projects\Maze Roller\ProtoBuildVer1_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.515220 ms
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 18a4 -> priority: 1 
+  Thread -> id: 3c84 -> priority: 1 
+  Thread -> id: 4bd4 -> priority: 1 
+  Thread -> id: 473c -> priority: 1 
+  Thread -> id: 35bc -> priority: 1 
+  Thread -> id: 3e6c -> priority: 1 
+  Thread -> id: 48f8 -> priority: 1 
+  Thread -> id: 46ac -> priority: 1 

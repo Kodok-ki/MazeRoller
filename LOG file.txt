@@ -17,3 +17,25 @@
 -Need to create script for actually controlling the maze before building the scene and 
  pushing it to the remote repo (origin).
 -Didn't commit any changes
+
+06/04/2018
+========================
+-Created a .gitignore file and added Temp/ and .vs/ to it
+-Commited progress up to this point to the "ProtoWorking" branch
+-Implemented temporary controls for rotating the maze about the z-axis.
+
+09/04/2018
+=========================
+-Created a build of progress so far. Found a BUG where the ball isn't colliding properly when
+ it first lands on the start floor. The initial rotation results in the ball clipping through the floor.
+ However, the collisions occur as they should after a some rotations.
+-The BUG occurs when the ball's transform becomes static.
+-Created a script for the initial bounce when the game starts but it does not solve the problem (see above
+ point) and the script is obsolete since physics materials can be easily created in the Unity editor.
+-Created a script for the ball movement to apply a continuous downward force of 980 units/second (i.e. gravity)
+ rather using the 'Use Gravity' in the editor. This seems to have fixed the bug for the moment.
+-Implemented buttons for rotation about the x-axis.
+-Tested and completed the maze in the editor. No bugs found but due to the ball and corridors'
+ relative widths, movement along corridors is not smooth.
+-Scaled ball down to 0.8 of its original size.
+-Built and playtested. Same results as playtesting in the editor.
