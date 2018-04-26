@@ -39,3 +39,24 @@
  relative widths, movement along corridors is not smooth.
 -Scaled ball down to 0.8 of its original size.
 -Built and playtested. Same results as playtesting in the editor.
+-Merged the 'ProtoWorking' branch into the master branch.
+-Pushed all progress to remote origin server.
+
+19/04/2018
+=========================
+-Starting on the maze generation algorithm by creating a QuadEdge data structure and the necessary
+ structures to build it (Nodes, Dual Nodes)
+-Started planning on building the initial graph (and it's dual) so that it's ready for traversal (maze-generating) 
+ but the tradie installing a new drier didn't really allow for that
+-The classes used are called QuadEdge, Node and Dnode, and are defined in the namespace MazeGen 
+
+23/04/2018
+=========================
+-Created a new working branch to work on the maze-generating algorithm called 'mazegen'
+-Worked out next steps and recorded them on the whiteboard
+-Added necessary member variables to the classes in MazeGen and encapsulated them.
+
+24/04/2018
+=========================
+-Shifted work to new scene 'MazeGen'.
+-Added to board more planning

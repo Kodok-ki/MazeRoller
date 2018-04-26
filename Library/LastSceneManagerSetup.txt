@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ProtoMaze.unity
+- path: Assets/Scenes/MazeGen.unity
   isLoaded: 1
   isActive: 1
