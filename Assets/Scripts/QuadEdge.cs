@@ -13,15 +13,22 @@ namespace MazeGen
         Dnode m_dnode1;
         Dnode m_dnode2;
 
-        public QuadEdge(){
-            //Depends on how the maze is going to be instantiated
-        }
+        //Constructor
+        public QuadEdge() { }
+        public QuadEdge(Node n1, Node n2){ m_node1 = n1; m_node2 = n2;}
+
+        public void setDnodes(Dnode n1, Dnode n2){ m_dnode1 = n1; m_dnode2 = n2;}
+
+        public Node GetNode1()   { return m_node1; }
+        public Node GetNode2()   { return m_node2; }
+        public Dnode GetDnode1() { return m_dnode1; }
+        public Dnode GetDnode2() { return m_dnode2; }
     }
 
     /// <summary>
     /// Class to represent the nodes (vertices) in the graph.
     /// </summary>
-    public class Node{
+    public class Node{ //TODO: Implement getter functions for quadedges and corresponding nodes
         //var info;
         bool m_visited;
         Node m_from;
@@ -37,7 +44,7 @@ namespace MazeGen
         /// </summary>
         public HashSet<QuadEdge> Edges{ get; }
 
-        public string ToString(){
+        public override string ToString(){
             return "";
         }
     }

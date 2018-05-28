@@ -60,3 +60,51 @@
 =========================
 -Shifted work to new scene 'MazeGen'.
 -Added to board more planning
+
+26/04/2018
+=========================
+-Committed all progress so far to working branch.
+-To outline: The current goal is to create a square maze that has its corridors procedurally-generated.
+ To achieve that:
+     -The next step is to create a 5x5 matrix of nodes that are only connected (by quadedges) to neighbour
+      node(s) that is only one index away.
+     -Then a traversal through the quadedges to create the dual nodes (and dual graph) in the "middle" of the 
+      regular graph. 
+     -A test will then be conducted to see that the base maze has actually been created by iterating through
+      the graphs in a linear fashion (using indices) and generating gameobjects to represent the nodes and edges.
+     -Once the graph and its dual is created, the actual maze-generating algorithm can be implemented
+      where the dual graph is traversed (via pointers) 
+
+27/04/2018
+=========================
+-Started working in MazeGeneration.cs
+-First addition to the Start() function is the creation and instantiation of m_Nodes (the 5x5 matrix of Nodes)
+-Added more to Node, Dnode and Quadedge classes for them to be usable
+-Need to figure out how the 2D array length function works
+
+10/05/2018
+=========================
+-C#'s array.GetLength(int dimension) parameter counts from zero. Eg. zeroth dimension is the row and first dimension is column
+-5x5 Node matrix verified using number of edges (40). 
+-Perhaps possible way of generating the dual graph such the dual nodes are connected via already existing quadedges is to 
+ traverse nodes and checking the next node's quadedges for possibility of duals. 
+ -Need to draw 5x5 graph to verify.
+
+21/05/2018
+=========================
+-Realised that the current algorithm adds new quadedges to the global quadedge set but not to the 
+ quadedge set of the nodes themselves so the individual nodes cannot access the quadedges they're 
+ connected to.
+
+25/05/2018
+==========================
+-Generation algorithm is at the point where it creates a (matrix) graph and (matrix) dual graph
+ without any errors at compilation and game start.
+-Now need to test it by iterating through the graphs and representing them with a (generic) gameobject
+ to see if they were implemented correctly (using a function called GraphTest()).
+
+28/05/2018
+==========================
+-Starting off GraphTest() by generating the objects for the m_Nodes to see what the spacing is like.
+-Hid the prototype maze and ball.
+-Moved file to Google Doc - Maze Roller LOG @ rickyhhleong@gmail.com
