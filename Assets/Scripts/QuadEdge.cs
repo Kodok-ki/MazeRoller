@@ -123,11 +123,13 @@ namespace DualGraph
         bool m_visited;
         Dnode m_from;
         Dnode m_next;
-        HashSet<QuadEdge> m_quadEdges;
+        HashSet<QuadEdge> m_quadEdgesPre;
+        HashSet<QuadEdge> m_quadEdgesPost;
 
         public Dnode() {
             m_visited = false;
-            m_quadEdges = new HashSet<QuadEdge>();
+            m_quadEdgesPre = new HashSet<QuadEdge>();
+            m_quadEdgesPost = new HashSet<QuadEdge>();
         }
         
         public Dnode From
@@ -138,24 +140,23 @@ namespace DualGraph
 
         public Dnode Next //Possibly not necessary
         {
-            get { return m_next; }
+            get { return m_next;  }
             set { m_next = value; }
         }
 
-        public HashSet<QuadEdge> QuadEdges //Might need cleaning up
+        public HashSet<QuadEdge> QuadEdges
         {
-            get
-            {
-                return m_quadEdges;
-            }
-
-            set
-            {
-                m_quadEdges = value;
-            }
+            get { return m_quadEdgesPre;  }
+            set { m_quadEdgesPre = value; }
         }
 
-        public void AddEdge(QuadEdge e){ m_quadEdges.Add(e); }
+        public HashSet<QuadEdge> SelectedEdges
+        {
+            get { return m_quadEdgesPost;  }
+            set { m_quadEdgesPost = value; }
+        }
+
+        public void AddEdge(QuadEdge e){ m_quadEdgesPre.Add(e); }
 
         public bool IsVisited()  { return m_visited;       }
         public void SetVisited() { m_visited = !m_visited; }
@@ -164,20 +165,25 @@ namespace DualGraph
         /// Turns off the wall of Dnode and its m_from node.
         /// </summary>
         public void TurnOffWall(){
-            if(m_from != null && m_quadEdges != null){
-                foreach(QuadEdge q in m_quadEdges){
+            if(m_quadEdgesPre != null){
+                foreach(QuadEdge q in m_quadEdgesPre){
                     if(q.FarDnode(this) == m_from){ q.TurnOffWall(); }
                 }
             }
         }
 
         public QuadEdge GetRandomEdge(){
-            if(m_quadEdges != null){
-                int size = m_quadEdges.Count;
+            if(m_quadEdgesPre != null){
+                int size = m_quadEdgesPre.Count;
                 int rnd = new Random().Next(size);
                 int i = 0;
-                foreach (QuadEdge q in m_quadEdges) {
-                    if (i == rnd) { return q; }
+                foreach (QuadEdge q in m_quadEdgesPre) {
+                    if (i == rnd) 
+                    {
+                        m_quadEdgesPost.Add(q);
+                        m_quadEdgesPre.Remove(q);
+                        return q; 
+                    }
                     i++;
                 }
             }

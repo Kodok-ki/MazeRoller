@@ -10,14 +10,13 @@ public class MazeGeneration : MonoBehaviour {
     HashSet<QuadEdge> m_Edges;  //All edges in the maze
     Dnode[,] m_Dnodes;          //All dual nodes in the maze
     int size;                   //Length of dimension in m_Nodes
-    Dnode root;                 //Start of maze
+    Dnode m_root;                 //Start of maze
 
     void Start() {
         CreateMaze();
-        root = m_Dnodes[0, 0];
+        m_root = m_Dnodes[0, 0];
         Traverse();
         GenerateObjects();
-        //GraphTest();
     }
 	
 	void Update () {
@@ -35,6 +34,7 @@ public class MazeGeneration : MonoBehaviour {
             {
                 m_Nodes[i, j] = new Node();
                 QuadEdge horz = new QuadEdge();         //Might need to be declared outside of loop - Temp. variable referencing the current quadedge between adjacent row nodes
+                QuadEdge vert = new QuadEdge();
                 if (j != 0)
                 {           //Connect row nodes
                     horz = new QuadEdge(m_Nodes[i, j - 1], m_Nodes[i, j]);
@@ -46,27 +46,33 @@ public class MazeGeneration : MonoBehaviour {
                 }
                 if (i != 0)
                 { //Connect column nodes
-                    QuadEdge vert = new QuadEdge(m_Nodes[i - 1, j], m_Nodes[i, j]); //Might need to be declared outside of loop - Temp. variable referencing the current quadedge between adjacent column nodes
+                    vert = new QuadEdge(m_Nodes[i - 1, j], m_Nodes[i, j]); //Might need to be declared outside of loop - Temp. variable referencing the current quadedge between adjacent column nodes
                     vert.pos = new Vector3D(2 * j, 0, 2 * i - 1);
                     m_Edges.Add(vert);
                     //GameObject edge = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                     //edge.transform.position = new Vector3(2 * j, 0, 2 * i - 1);
-                    if (j > 0 && j < (size - 1) && i < (size - 1))
+                }
+                if (i > 0 && j > 0)
+                {
+                    try
                     {
-                        try
+                        if(i < size - 1)
+                        {
+                            horz.SetDnodes(m_Dnodes[i - 1, j - 1], m_Dnodes[i, j - 1]); //Create connection between column dnodes
+                            m_Dnodes[i - 1, j - 1].AddEdge(horz); 
+                            m_Dnodes[i, j - 1].AddEdge(horz); 
+                        }
+                        if(j < size - 1 )
                         {
                             vert.SetDnodes(m_Dnodes[i - 1, j - 1], m_Dnodes[i - 1, j]); //Create connection between row dnodes
-                            horz.SetDnodes(m_Dnodes[i - 1, j - 1], m_Dnodes[i, j - 1]); //Create connection between column dnodes
-                            m_Dnodes[i - 1, j - 1].AddEdge(vert); //These 4 lines are tentative. Not sure if they add edges properly.
-                            m_Dnodes[i - 1, j - 1].AddEdge(horz);
+                            m_Dnodes[i - 1, j - 1].AddEdge(vert);
                             m_Dnodes[i - 1, j].AddEdge(vert);
-                            m_Dnodes[i, j - 1].AddEdge(horz);
                         }
-                        catch (NullReferenceException e)
-                        {
-                            Console.WriteLine("Horz or Vert is null");
-                            throw e;
-                        }
+                    }
+                    catch (NullReferenceException e)
+                    {
+                        Debug.Log("Horz or Vert is null");
+                        throw e;
                     }
                 }
             }
@@ -94,7 +100,7 @@ public class MazeGeneration : MonoBehaviour {
     void GenerateObjects(){
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                if(m_Nodes[i,j] != null){
+                if(m_Nodes[i,j] != null){   //Create walls from nodes
                     GameObject node = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     node.transform.position = new Vector3(j * 2, 0, i * 2);
                 }
@@ -106,23 +112,42 @@ public class MazeGeneration : MonoBehaviour {
                 edge.transform.position = new Vector3(q.pos.x, q.pos.y, q.pos.z);
             }
         }
+        //Create the floor
+        GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        floor.transform.position = new Vector3(size - 1, -0.5f, size - 1);
+        floor.transform.localScale = new Vector3(0.2f * size - 0.1f, 1, 0.2f * size - 0.1f);
+        Material floorM = Resources.Load("/Assets/Materials/WallM.mat", typeof(Material)) as Material;
+        floor.GetComponent<Renderer>().material = floorM;
     }
 
     void Traverse(){ //Starting with iterative implementation
         Stack<Dnode> stk = new Stack<Dnode>();
-        stk.Push(root);
+        stk.Push(m_root);
         while (stk.Count != 0) {
             Dnode currentNode = stk.Pop();
             if (!currentNode.IsVisited())
             {
                 currentNode.SetVisited();
                 if(currentNode.From != null){ currentNode.TurnOffWall(); }
-                foreach (QuadEdge q in currentNode.QuadEdges) {
-                    if (!q.FarDnode(currentNode).IsVisited()) { 
+                int size = currentNode.QuadEdges.Count;
+                for(int i = 0; i < size; i++) 
+                {
+                    QuadEdge q = currentNode.GetRandomEdge();
+                    if (!q.FarDnode(currentNode).IsVisited())
+                    {
                         stk.Push(q.FarDnode(currentNode));           // Push neighbour onto stack
                         q.FarDnode(currentNode).From = currentNode;  // Set neighbour's m_from node to current node.
                     }
                 }
+            }
+        }
+    }
+
+    void NeighbourCheck(){
+        for(int i = 0; i < size-1; i++){
+            for(int j = 0; j < size-1; j++){
+                int count = m_Dnodes[i, j].QuadEdges.Count;
+                Debug.Log("The [" + i + ", " + j + "] node has " + count + " friends.");
             }
         }
     }
