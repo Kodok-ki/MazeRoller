@@ -44,24 +44,23 @@ namespace DualGraph
         }
 
         public QuadEdge() { 
-            //this.Wall = true;
             m_visited = false;
         }
         public QuadEdge(Node n1, Node n2){ m_node1 = n1; m_node2 = n2;}
 
         public void SetDnodes(Dnode n1, Dnode n2){ m_dnode1 = n1; m_dnode2 = n2;}
 
-        public Node GetNode1()   { return m_node1; }    //Necessary?
-        public Node GetNode2()   { return m_node2; }    //Necessary?
-        public Dnode GetDnode1() { return m_dnode1; }   //Necessary?
-        public Dnode GetDnode2() { return m_dnode2; }   //Necessary?
+        public Node GetNode1()   { return m_node1; }    
+        public Node GetNode2()   { return m_node2; }    
+        public Dnode GetDnode1() { return m_dnode1; }   
+        public Dnode GetDnode2() { return m_dnode2; }   
 
         /// <summary>
         /// Sets the quadedge such that it is no longer a wall.
         /// </summary>
         public void TurnOffWall(){ m_wall = false; }
 
-        /* public Node FarNode(Node from){
+        /* public Node FarNode(Node from){                  //Will be implemented as an override next time
             if (from == m_node1) { return m_node2; }
             else{ return m_node1; }
         } */
@@ -81,7 +80,6 @@ namespace DualGraph
     /// Class to represent the nodes (vertices) in the graph.
     /// </summary>
     public class Node{
-        //var info;
         bool m_visited;
         Node m_from;
         Node m_next;
@@ -94,7 +92,7 @@ namespace DualGraph
         /// <summary>
         /// Returns the set of quadedges a node is attached to. 
         /// </summary>
-        public HashSet<QuadEdge> Edges{ get; }
+        public HashSet<QuadEdge> Edges { get { return m_quadEdges; } }
 
         public Node From
         {
@@ -110,9 +108,6 @@ namespace DualGraph
         public bool IsVisited()  { return m_visited;       }
         public void SetVisited() { m_visited = !m_visited; }
 
-        /* public override string ToString(){
-            return "";
-        } */
     }
 
     /// <summary>
