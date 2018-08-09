@@ -1,3 +1,7 @@
+[OUTDATED - Please see the mazegen branch for the up-to-date version of the project]
+
+
+
 Maze Roller
 
 A project to try and implement a procedurally-generated maze algorithm in the form of a game.
