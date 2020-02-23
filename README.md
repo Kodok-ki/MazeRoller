@@ -1,13 +1,13 @@
-[OUTDATED - Please see the mazegen branch for the up-to-date version of the project]
-
-
-
 Maze Roller
 
-A project to try and implement a procedurally-generated maze algorithm in the form of a game.
-The ProtoBuild shows off the purpose of the game which is to rotate (tilt) a maze in order to guide a ball from start to finish.
-However, ProtoBuild has a premade maze, rather than a randomly-generated one.
+@author: Kodok-ki
 
-In the mazegen branch of the project however, can create procedurally-generated. 
-Unfortunately there isn't a build for this just yet as the game mechanics still need to be included in this branch of the code.
-But the final build will be coming soon!
+Maze Roller is a simple game where a player rotates a maze with the WASD keys and guides a ball from the start point to the goal point.
+
+The mechanics of the game are extremely simple but Maze Roller was developed with the intention of implementing a procedurally-generated maze. The specific algorithm used was depth-first search through a graph and its dual graph representing the walls and traversable space, respectively.
+
+The current code allows for any square size with a simple change in variable, but there is not yet enough variance in the maze to justify playing larger mazes. The size shown in build 1.0 is simply what I decided to be optimal.
+
+As of build 1.0, the maze comes in the form of a 2D (square) matrix but if I come back to this in the future, I hope to implement the maze-generation algorithm so that it accounts for different shapes, and accounts for different sizes by having more randomness in the maze paths.
+
+Thank you for reading up to this point. I hope you enjoy Maze Roller.
